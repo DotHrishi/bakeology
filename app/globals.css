@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+/* Bakelogy theme */
+@theme {
+  --color-light-gray: #EEE8DF;
+  --color-gold: #F8C42E;
+  --color-dark-blue: #001D51;
+  --color-dark-gray: #C4BCB9;
+  --color-peach: #FFC3B0;
+  --color-beige: #FFF7E6;
+}
+
+.font-heading {
+  font-family: var(--font-playfair);
+}
+
+.font-body {
+  font-family: var(--font-inter);
+}
