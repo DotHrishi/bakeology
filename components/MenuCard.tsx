@@ -8,15 +8,15 @@ type MenuCardProps = {
 
 export default function MenuCard({ name, image, isFavorite }: MenuCardProps) {
   return (
-    <div className="bg-light-gray rounded-xl overflow-hidden shadow-sm hover:shadow-md transition">
-      
+    <div className="group bg-light-gray rounded-xl overflow-hidden shadow-sm hover:shadow-md transition">
+
       {/* IMAGE */}
-      <div className="relative w-full h-48">
+      <div className="relative w-full h-48 overflow-hidden">
         <Image
           src={image}
           alt={name}
           fill
-          className="object-cover"
+          className="object-cover transition-transform duration-500 group-hover:scale-110"
         />
       </div>
 

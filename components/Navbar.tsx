@@ -72,15 +72,15 @@ function NavContent({ compact = false }: { compact?: boolean }) {
         <Image
           src="/bakeology-logo.png"
           alt="Bakelogy Logo"
-          width={compact ? 32 : 40}
-          height={compact ? 32 : 40}
+          width={compact ? 32 : 50}
+          height={compact ? 32 : 50}
           className="object-contain"
         />
         {!compact && (
           <Image
             src="/bakeology-text.png"
             alt="Bakelogy"
-            width={140}
+            width={250}
             height={40}
             className="hidden sm:block object-contain"
           />
@@ -91,19 +91,17 @@ function NavContent({ compact = false }: { compact?: boolean }) {
       </Link>
 
       {/* LINKS */}
-      <div className={`flex items-center ${compact ? 'gap-6 text-sm' : 'gap-8 text-base'} text-dark-blue font-medium font-body`}>
-        <Link href="/menu" className="hover:text-peach transition-colors bg-peach p-4 rounded-full">
-          Menu
-        </Link>
-        <Link href="/order" className="hover:text-peach transition-colors bg-peach p-4 rounded-full">
-          Order
-        </Link>
-        <Link href="/about" className="hover:text-peach transition-colors bg-peach p-4 rounded-full">
-          About
-        </Link>
-        <Link href="/contact" className="hover:text-peach transition-colors bg-peach p-4 rounded-full">
-          Contact
-        </Link>
+      <div className={`flex items-center ${compact ? 'gap-8 text-m' : 'gap-10 text-2xl'} font-medium font-body dancing-script`}>
+        {['Menu', 'Order', 'About', 'Contact'].map((item) => (
+          <Link
+            key={item}
+            href={`/${item.toLowerCase()}`}
+            className="relative group text-light-gray hover:text-gold transition-colors duration-300"
+          >
+            {item}
+            <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-gold transition-all duration-300 group-hover:w-full" />
+          </Link>
+        ))}
       </div>
     </>
   );
