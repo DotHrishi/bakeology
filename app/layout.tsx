@@ -15,6 +15,9 @@ const inter = Inter({
 export const metadata = {
   title: "Bakelogy | Home Baker in Nagpur",
   description: "Custom cakes, brownies & desserts in Nagpur",
+  icons: {
+    icon: "/bakeology-logo.png",
+  },
 };
 
 export default function RootLayout({
