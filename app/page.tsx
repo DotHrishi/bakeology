@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -22,7 +23,7 @@ export default function Home() {
         ease: "back.out(1.7)", // Subtle bounce
       })
         .from(
-          ".hero-text",
+          ".hero-text-line",
           {
             opacity: 0,
             y: 50,
@@ -157,7 +158,7 @@ export default function Home() {
 
               <div className="hero-cta">
                 <a
-                  href="/menu"
+                  href="/order%20now"
                   className="inline-flex bg-[#001D51] text-white px-10 py-4 rounded-full
                              font-semibold text-2xl shadow-md transition
                              hover:shadow-lg hover:brightness-105 hover:text-gold dancing-script"
@@ -290,90 +291,7 @@ export default function Home() {
 
 
         {/* ================= FOOTER ================= */}
-<div className="h-1 w-full bg-gradient-to-r from-transparent via-gold to-transparent blur-sm" />
-        <footer className="relative bg-dark-blue text-light-gray pt-10 pb-16">
-          <div className="max-w-7xl mx-auto px-6">
-
-            {/* TOP */}
-            <div className="grid md:grid-cols-3 gap-16 mb-20">
-
-              {/* BRAND */}
-              <div>
-                <h3 className="font-heading text-2xl font-semibold text-beige">
-                  <img src="/bakeology-text.png" alt="Bakelogy Logo" className="w-75 h-15 mb-3" />
-                </h3>
-                <p className="font-body text-dark-gray leading-relaxed max-w-sm">
-                  A home-baking studio based in Nagpur, crafting premium desserts for
-                  celebrations, events, and bulk orders with consistency and care.
-                </p>
-              </div>
-
-              {/* LINKS */}
-              <div>
-                <h4 className="text-2xl font-bold mb-4 text-gold dancing-script">
-                  Explore
-                </h4>
-                <ul className="space-y-3 font-body text-dark-gray">
-                  <li>
-                    <a href="/menu" className="hover:text-[#FFC3B0] transition">
-                      Menu
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/order" className="hover:text-[#FFC3B0] transition">
-                      Place an Order
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/bulk-orders" className="hover:text-[#FFC3B0] transition">
-                      Bulk Orders
-                    </a>
-                  </li>
-                </ul>
-              </div>
-
-              {/* CONTACT */}
-              <div>
-                <h4 className="text-2xl font-bold mb-4 text-gold dancing-script">
-                  Get in Touch
-                </h4>
-                <ul className="space-y-3 font-body text-dark-gray">
-                  <li>Nagpur, Maharashtra</li>
-                  <li>
-                    <a
-                      href="tel:+91XXXXXXXXXX"
-                      className="hover:text-gold transition"
-                    >
-                      +91 XXXXXXXXXX
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="mailto:hello@bakeologynagpur.in"
-                      className="hover:text-gold transition"
-                    >
-                      hello@bakeologynagpur.in
-                    </a>
-                  </li>
-                </ul>
-              </div>
-
-            </div>
-
-            {/* DIVIDER */}
-            <div className="border-t border-gold pt-4 flex flex-col sm:flex-row justify-between items-center gap-6">
-
-              <p className="font-body text-sm text-dark-gray">
-                © {new Date().getFullYear()} Bakelogy. All rights reserved.
-              </p>
-
-              <p className="font-body text-sm text-dark-gray">
-                🍰 Crafted with care in Nagpur.
-              </p>
-
-            </div>
-          </div>
-        </footer>
+        <Footer />
       </main>
     </>
   );

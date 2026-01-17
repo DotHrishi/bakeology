@@ -1,5 +1,6 @@
 import "./globals.css";
 import { Playfair_Display, Inter } from "next/font/google";
+import { CartProvider } from "@/context/CartContext";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -22,11 +23,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${playfair.variable} ${inter.variable} bg-beige text-dark-blue antialiased`}
-      >
-        {children}
+    <html
+      lang="en"
+      className={`${playfair.variable} ${inter.variable}`}
+    >
+      <body className="bg-beige text-dark-blue antialiased">
+        <CartProvider>{children}</CartProvider>
       </body>
     </html>
   );
