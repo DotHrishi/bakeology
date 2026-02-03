@@ -51,7 +51,7 @@ export default function MenuCard({ name, image, isFavorite, price = "₹--", des
         {/* HOVER/CLICK DESCRIPTION OVERLAY */}
         {description && (
           <div className={`absolute inset-0 bg-dark-blue/60 backdrop-blur-sm flex items-center justify-center p-4 transition-opacity duration-300 ${showDesc ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}>
-            <p className="text-white font-body text-sm italic leading-relaxed tracking-wide">
+            <p className="text-white font-body text-sm leading-relaxed tracking-wide">
               "{description}"
             </p>
           </div>
@@ -78,7 +78,7 @@ export default function MenuCard({ name, image, isFavorite, price = "₹--", des
         <div className="w-full mt-auto flex items-center justify-between gap-4">
 
           {/* PRICE */}
-          <div className="text-2xl font-bold text-dark-blue dancing-script tracking-tight">
+          <div className="text-2xl font-bold text-dark-blue font-body tracking-tight">
             {price}
           </div>
 

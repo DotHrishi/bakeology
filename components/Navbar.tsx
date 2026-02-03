@@ -94,7 +94,7 @@ export default function Navbar() {
       <div className={`fixed inset-0 bg-dark-blue z-40 flex flex-col items-center justify-center gap-12 transition-all duration-500 ${isMobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
         <div className="flex flex-col items-center gap-8 text-3xl font-heading font-bold text-white">
           <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-gold transition">Home</Link>
-          <Link href="/order now" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-gold transition">Order Now</Link>
+          <Link href="/order now" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-gold text-peach transition">Order Now</Link>
           <Link href="/about us" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-gold transition">About Us</Link>
           <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-gold transition">Contact</Link>
         </div>
@@ -126,7 +126,7 @@ export default function Navbar() {
 
 function NavLinks() {
   return (
-    <div className="flex items-center gap-10 text-xl font-medium font-body dancing-script text-light-gray">
+    <div className="flex items-center gap-10 text-xl font-medium font-body text-light-gray">
       {["Order Now", "About Us", "Contact"].map((item) => (
         <Link
           key={item}
@@ -170,7 +170,7 @@ function NavContentCompact() {
         />
       </Link>
 
-      <div className="flex items-center gap-6 text-xl font-medium font-body dancing-script">
+      <div className="flex items-center gap-6 text-xl font-medium font-body">
         <NavLinks />
         <div className="text-gold font-extrabold font-serif">|</div>
         <CartIcon compact />

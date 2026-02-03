@@ -25,7 +25,7 @@ const Footer = () => {
                 placeholder="Your email address"
                 className="bg-white/10 border border-white/10 rounded-full px-6 py-3 text-white placeholder:text-white/40 focus:outline-none focus:border-gold w-full md:w-80"
               />
-              <button suppressHydrationWarning className="bg-gold text-dark-blue px-6 py-3 rounded-full dancing-script font-bold hover:bg-white transition-colors">
+              <button suppressHydrationWarning className="bg-gold text-dark-blue px-6 py-3 rounded-full font-body font-bold hover:bg-white transition-colors">
                 Subscribe
               </button>
             </div>
@@ -51,7 +51,7 @@ const Footer = () => {
 
             {/* LINKS */}
             <div>
-              <h4 className="text-xl font-bold mb-6 text-gold dancing-script">
+              <h4 className="text-xl font-bold mb-6 text-gold font-body">
                 Explore
               </h4>
               <ul className="space-y-4 font-body text-white/70">
@@ -75,7 +75,7 @@ const Footer = () => {
 
             {/* CONTACT */}
             <div>
-              <h4 className="text-xl font-bold mb-6 text-gold dancing-script">
+              <h4 className="text-xl font-bold mb-6 text-gold font-body">
                 Get in Touch
               </h4>
               <ul className="space-y-4 font-body text-white/70">

@@ -89,7 +89,7 @@ export default function MenuPage() {
         </div>
 
         <div className="relative z-10 text-center px-4">
-          <h1 className="text-6xl md:text-8xl text-white dancing-script drop-shadow-lg mb-4">
+          <h1 className="text-6xl md:text-8xl text-white font-body font-bold drop-shadow-lg mb-4">
             Our Creations
           </h1>
           <p className="text-xl text-white/90 font-heading tracking-widest uppercase">
@@ -110,7 +110,7 @@ export default function MenuPage() {
             className="menu-section scroll-mt-40"
           >
             <div className="flex items-center gap-6 mb-12">
-              <h2 className="text-5xl font-bold text-dark-blue dancing-script flex-shrink-0">
+              <h2 className="text-5xl font-bold text-dark-blue font-body flex-shrink-0">
                 {section.category}
               </h2>
               <div className="h-[1px] bg-dark-blue/10 flex-grow" />
@@ -141,7 +141,7 @@ export default function MenuPage() {
         <p className="text-2xl font-heading mb-6 max-w-2xl mx-auto px-6">
           "One cannot think well, love well, sleep well, if one has not dined well."
         </p>
-        <p className="text-gold dancing-script text-3xl">
+        <p className="text-gold font-body text-3xl">
           ― Virginia Woolf
         </p>
       </section>

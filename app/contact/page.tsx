@@ -1,21 +1,51 @@
+"use client";
+
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import React from "react";
+import toast, {Toaster} from 'react-hot-toast';
 
 const Page = () => {
   return (
     <div className="min-h-screen flex flex-col bg-[url('/hero.png')] bg-cover bg-center bg-fixed bg-no-repeat">
       <Navbar />
-
+      <Toaster position="top-center" />
       <div className="flex-grow flex items-center justify-center p-6 backdrop-blur-[2px]">
-        <div className="w-full max-w-4xl bg-beige/95 backdrop-blur-md rounded-2xl shadow-2xl overflow-hidden border border-gold/30">
+        <div className="w-full max-w-4xl bg-beige/95 backdrop-blur-md rounded-2xl shadow-2xl overflow-hidden border border-dark-blue border-2">
 
           <div className="p-8 md:p-12">
-            <h1 className="text-4xl md:text-5xl font-bold mb-8 text-dark-blue dancing-script text-center underline underline-offset-8 decoration-gold">
+            <h1 className="text-4xl md:text-5xl font-bold mb-8 text-dark-blue font-body text-center underline underline-offset-8 decoration-gold">
               Contact Us for Bulk Orders
             </h1>
 
-            <form method="post">
+            <form 
+              onSubmit={async (e)=>{
+                e.preventDefault();
+
+                const form = e.currentTarget;
+                const formData = new FormData(form);
+
+                const payload = Object.fromEntries(formData.entries());
+
+                const res = await fetch("/api/contact", {
+                  method: "POST",
+                  headers: {"Content-Type": "application/json"},
+                  body: JSON.stringify(payload)
+                });
+
+                if(res.ok) {
+                  toast.success("Request Submitted!");
+                  form.reset();
+                } else {
+                  toast.error("Something went wrong!");
+                }
+
+                if(!res.ok) {
+                  const err = await res.text();
+                  console.error(err);
+                }
+              }}
+            >
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 
                 {/* NAME */}
@@ -133,7 +163,7 @@ const Page = () => {
                 <button
                   type="submit"
                   className="px-12 py-4 bg-dark-blue text-gold font-bold text-2xl rounded-full
-                             hover:bg-gold hover:text-dark-blue transform transition-all duration-200 dancing-script shadow-lg"
+                             hover:bg-gold hover:text-dark-blue transform transition-all duration-200 font-body shadow-lg"
                 >
                   Submit Request
                 </button>

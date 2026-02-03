@@ -161,7 +161,7 @@ export default function Home() {
                   href="/order%20now"
                   className="inline-flex bg-[#001D51] text-white px-10 py-4 rounded-full
                              font-semibold text-2xl shadow-md transition
-                             hover:shadow-lg hover:brightness-105 hover:text-gold dancing-script"
+                             hover:shadow-lg hover:brightness-105 hover:text-gold font-body"
                 >
                   Explore Menu
                 </a>
