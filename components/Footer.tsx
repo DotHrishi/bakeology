@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Instagram, Facebook, Mail, Phone, MapPin, ArrowUpRight } from 'lucide-react';
 import Link from 'next/link';
+import toast from 'react-hot-toast';
 
 const Footer = () => {
+  const [subscribed, setSubscribed] = useState(false);
+
   return (
     <div className="relative z-50">
       <div className="h-1 w-full bg-gradient-to-r from-transparent via-gold to-transparent blur-sm" />
@@ -13,23 +16,75 @@ const Footer = () => {
         <div className="max-w-7xl mx-auto px-6 relative z-10">
 
           {/* NEWSLETTER */}
-          <div className="flex flex-col md:flex-row justify-between items-center bg-white/5 backdrop-blur-lg rounded-3xl p-8 mb-20 border border-white/10">
-            <div className="mb-6 md:mb-0">
-              <h3 className="text-2xl font-heading text-gold mb-2">Join our Sweet Circle</h3>
-              <p className="text-white/60 font-body">Get exclusive offers and early access to new menus.</p>
-            </div>
-            <div className="flex w-full md:w-auto gap-2">
-              <input
-                suppressHydrationWarning
-                type="email"
-                placeholder="Your email address"
-                className="bg-white/10 border border-white/10 rounded-full px-6 py-3 text-white placeholder:text-white/40 focus:outline-none focus:border-gold w-full md:w-80"
-              />
-              <button suppressHydrationWarning className="bg-gold text-dark-blue px-6 py-3 rounded-full font-body font-bold hover:bg-white transition-colors">
-                Subscribe
-              </button>
-            </div>
-          </div>
+          {!subscribed && (
+            <form
+
+              onSubmit={async (e) => {
+                e.preventDefault();
+
+                const form = e.currentTarget;
+                const formData = new FormData(form);
+                const payload = Object.fromEntries(formData.entries());
+
+                const res = await fetch("/api/mail_list", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify(payload)
+                });
+
+                if (res.ok) {
+                  toast.success('Subscribed to our mailing list! Stay tuned for delicious updates.',
+                    {
+                      duration: 3000,
+                      icon: '🤘',
+                      style: {
+                        borderRadius: '10px',
+                        background: '#000000',
+                        color: '#F8C42E',
+                      },
+                    }
+                  );
+                  
+                  setSubscribed(true);
+                  form.reset();
+                } else {
+                  toast.error("Subscription failed! Please try again.");
+                  const err = await res.text();
+                  console.error(err);
+                }
+
+              }}
+              className="flex flex-col md:flex-row justify-between items-center bg-white/5 backdrop-blur-lg rounded-3xl p-8 mb-20 border border-white/10"
+            >
+              <div className="mb-6 md:mb-0">
+                <h3 className="text-2xl font-heading text-gold mb-2">
+                  Join our Sweet Circle
+                </h3>
+                <p className="text-white/60 font-body">
+                  Get exclusive offers and early access to new menus.
+                </p>
+              </div>
+
+              <div className="flex w-full md:w-auto gap-2">
+                <input
+                  suppressHydrationWarning
+                  type="email"
+                  name="email"
+                  required
+                  placeholder="Your email address"
+                  className="bg-white/10 border border-white/10 rounded-full px-6 py-3 text-white placeholder:text-white/40 focus:outline-none focus:border-gold w-full md:w-80"
+                />
+
+                <button
+                  suppressHydrationWarning
+                  type="submit"
+                  className="bg-gold text-dark-blue px-6 py-3 rounded-full font-body font-bold hover:bg-white transition-colors"
+                >
+                  Subscribe
+                </button>
+              </div>
+            </form>
+          )}
 
           {/* TOP GRID */}
           <div className="grid md:grid-cols-4 gap-12 mb-10">

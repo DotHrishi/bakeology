@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Plus, Minus, ShoppingBag } from "lucide-react";
+import { Plus, Minus, ShoppingBag, Star } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 import { useState } from "react";
 
@@ -60,7 +60,7 @@ export default function MenuCard({ name, image, isFavorite, price = "₹--", des
         {/* BADGE */}
         {isFavorite && (
           <div className="absolute top-4 right-4 bg-dark-blue backdrop-blur-md text-peach text-[10px] font-bold px-3 py-1.5 rounded-full shadow-sm z-10 font-heading tracking-[0.2em] uppercase border border-gold/20">
-            Star Pick
+            <Star size={16} fill="currentColor" strokeWidth={3} />
           </div>
         )}
       </div>
@@ -82,16 +82,16 @@ export default function MenuCard({ name, image, isFavorite, price = "₹--", des
             {price}
           </div>
 
-          {/* BUTTON (HALF WIDTH) */}
-          <div className="w-1/2">
+          {/* BUTTON (FLEXIBLE WIDTH) */}
+          <div className="flex-1 min-w-[120px]">
             {quantity === 0 ? (
               <button
                 suppressHydrationWarning
                 onClick={handleAdd}
                 className="w-full flex items-center justify-center gap-2 border border-dark-blue bg-transparent text-dark-blue py-3 rounded-full font-bold hover:bg-dark-blue hover:text-gold hover:border-dark-blue transition-all duration-300 group/btn shadow-[0_4px_14px_rgba(0,0,0,0.02)]"
               >
-                <span className="font-heading uppercase tracking-widest text-sm">Add To Cart</span>
-                <ShoppingBag size={14} className="opacity-0 -translate-x-2 group-hover/btn:opacity-100 group-hover/btn:translate-x-0 transition-all duration-300 hidden sm:block" />
+                <span className="font-heading uppercase tracking-wider text-xs sm:text-sm whitespace-nowrap">Add To Cart</span>
+                <ShoppingBag size={14} className="opacity-0 -translate-x-2 group-hover/btn:opacity-100 group-hover/btn:translate-x-0 transition-all duration-300 hidden xl:block" />
               </button>
             ) : (
               <div className="w-full flex items-center justify-between bg-dark-blue text-gold rounded-full p-1.5 shadow-xl animate-in fade-in zoom-in duration-300 border border-gold/10">

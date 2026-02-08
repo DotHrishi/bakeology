@@ -66,6 +66,14 @@ export default function MenuPage() {
           },
         });
       });
+
+      // Show Quick Jump Sidebar only when scrolling past hero
+      ScrollTrigger.create({
+        trigger: ".menu-main",
+        start: "top center",
+        onEnter: () => gsap.to(".quick-jump-sidebar", { opacity: 1, x: 0, pointerEvents: "auto", duration: 0.5, ease: "power3.out" }),
+        onLeaveBack: () => gsap.to(".quick-jump-sidebar", { opacity: 0, x: 20, pointerEvents: "none", duration: 0.3, ease: "power3.in" }),
+      });
     });
 
     return () => ctx.revert(); // ✅ FIX: cleanup on unmount
@@ -102,7 +110,7 @@ export default function MenuPage() {
         </div>
       </section>
 
-      <main className="px-6 py-20 max-w-7xl mx-auto space-y-32">
+      <main className="menu-main px-6 py-20 max-w-7xl mx-auto space-y-32 xl:pr-72">
         {menuData.map((section) => (
           <section
             key={section.category}
@@ -146,7 +154,29 @@ export default function MenuPage() {
         </p>
       </section>
 
+      <QuickJumpSidebar />
       <Footer />
     </div>
   );
+}
+
+function QuickJumpSidebar() {
+  return (
+    <div className="quick-jump-sidebar fixed right-6 top-1/2 -translate-y-1/2 z-40 hidden xl:flex flex-col bg-peach/70 backdrop-blur-md p-6 rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.12)] border border-black opacity-0 translate-x-10 pointer-events-none transition-none">
+      <p className="text-xs font-bold text-white mb-4 text-center uppercase tracking-widest border-b border-black/10 pb-2">
+        Quick Menu
+      </p>
+      <div className="flex flex-col gap-3">
+        {menuData.map((section) => (
+          <a
+            key={section.category}
+            href={`#${section.category}`}
+            className="text-xl font-medium text-dark-blue hover:text-black hover:translate-x-1 transition-all text-center font-body"
+          >
+            {section.category}
+          </a>
+        ))}
+      </div>
+    </div>
+  )
 }
