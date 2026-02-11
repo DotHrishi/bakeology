@@ -19,6 +19,10 @@ export async function POST(req: Request) {
 
     const { email } = await req.json();
 
+    if (typeof email !== "string") {
+  return NextResponse.json({ error: "Invalid email" }, { status: 400 });
+}
+
     if (!email) {
       return NextResponse.json(
         { error: "Email is required" },
@@ -35,8 +39,9 @@ export async function POST(req: Request) {
         [email]
       );
     } catch (err: any) {
-      // duplicate email (unique constraint)
+
       if (err.code === "23505") {
+
         return NextResponse.json(
           { error: "Already subscribed" },
           { status: 409 }
@@ -75,6 +80,11 @@ export async function POST(req: Request) {
    Groq helper
 --------------------------------*/
 async function generateWelcomeMail(email: string) {
+  console.log(
+  "GROQ KEY LENGTH:",
+  process.env.GROQ_API_KEY?.length
+);
+
 
   const res = await fetch(
     "https://api.groq.com/openai/v1/chat/completions",
@@ -90,7 +100,7 @@ async function generateWelcomeMail(email: string) {
           {
             role: "system",
             content:
-              "You write short, friendly welcome emails for a bakery newsletter. Keep it under 70 words.",
+              "You write short, friendly welcome emails for a bakery named bakeology as a newsletter. Keep it under 70 words. Minimum lines should be 10",
           },
           {
             role: "user",
@@ -104,6 +114,9 @@ async function generateWelcomeMail(email: string) {
 
   const data = await res.json();
 
+  console.log("GROQ STATUS:", res.status);
+  console.log("GROQ DATA:", JSON.stringify(data, null, 2));
+
   const text =
     data?.choices?.[0]?.message?.content ??
     "Thanks for subscribing to our bakery newsletter!";
@@ -114,3 +127,4 @@ async function generateWelcomeMail(email: string) {
     </div>
   `;
 }
+

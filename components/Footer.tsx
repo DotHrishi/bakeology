@@ -1,13 +1,16 @@
+"use client";
+
 import React, { useState } from 'react'
 import { Instagram, Facebook, Mail, Phone, MapPin, ArrowUpRight } from 'lucide-react';
 import Link from 'next/link';
-import toast from 'react-hot-toast';
+import toast, {Toaster} from 'react-hot-toast';
 
 const Footer = () => {
   const [subscribed, setSubscribed] = useState(false);
 
   return (
     <div className="relative z-50">
+      <Toaster position="top-center" />
       <div className="h-1 w-full bg-gradient-to-r from-transparent via-gold to-transparent blur-sm" />
       <footer className="relative bg-[#001D51] text-light-gray pt-20 pb-10 overflow-hidden">
         {/* PATTERN OVERLAY */}
@@ -48,7 +51,17 @@ const Footer = () => {
                   setSubscribed(true);
                   form.reset();
                 } else {
-                  toast.error("Subscription failed! Please try again.");
+                  toast.error("You are already subscribed or an error occurred. Please try again later.",
+                    {
+                      duration: 3000,
+                      icon: '⚠️',
+                      style: {
+                        borderRadius: '10px',
+                        background: '#000000',
+                        color: '#F8C42E',
+                      },
+                    }
+                  );
                   const err = await res.text();
                   console.error(err);
                 }
