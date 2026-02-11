@@ -14,7 +14,7 @@ export async function POST(req: Request) {
 };
 
 resend.emails.send({
-  from: 'onboarding@resend.dev',
+  from: 'bakeology@resend.dev',
   to: 'kalihrishikesh@gmail.com',
   subject: 'Hello World',
   html: '<p>Congrats on sending your <strong>first email</strong>!</p>'
