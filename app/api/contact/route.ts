@@ -1,16 +1,9 @@
 import { NextResponse } from "next/server";
 import { pool } from "@/app/lib/db";
-import { ratelimit } from "@/lib/ratelimit";
+import { notifySlack } from "@/lib/slack";
 
 export async function POST(req: Request) {
     try {
-        const ip = req.headers.get("x-forwarded-for") ?? "127.0.0.1";
-        const { success } = await ratelimit.limit(ip);
-
-        if (!success) {
-            return NextResponse.json({ error: "Too many requests" }, { status: 429 });
-        }
-
         const body = await req.json();
 
         const {
@@ -45,6 +38,11 @@ export async function POST(req: Request) {
         ];
 
         const result = await pool.query(query, values);
+
+        // Notify admin via Slack
+        notifySlack(
+            `💬 *New Enquiry Received*\n*Name:* ${name}\n*Phone:* ${phone}\n*Email:* ${email}\n*Source:* ${source}\n*Address:* ${address}\n*Message:* ${message}`
+        );
 
         return NextResponse.json({
             success: true,

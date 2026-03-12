@@ -162,8 +162,8 @@ export default function MenuPage() {
 
 function QuickJumpSidebar() {
   return (
-    <div className="quick-jump-sidebar fixed right-6 top-1/2 -translate-y-1/2 z-40 hidden xl:flex flex-col bg-peach/70 backdrop-blur-md p-6 rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.12)] border border-black opacity-0 translate-x-10 pointer-events-none transition-none">
-      <p className="text-xs font-bold text-white mb-4 text-center uppercase tracking-widest border-b border-black/10 pb-2">
+    <div className="quick-jump-sidebar fixed right-6 top-1/2 -translate-y-1/2 z-40 hidden xl:flex flex-col bg-dark-blue/80 backdrop-blur-md p-6 rounded-2xl border-gold shadow-[0_8px_30px_rgba(0,0,0,0.12)] border-2 border-black opacity-0 translate-x-10 pointer-events-none transition-none">
+      <p className="text-xs font-bold text-white mb-4 text-center uppercase tracking-widest border-b border-gold pb-2">
         Quick Menu
       </p>
       <div className="flex flex-col gap-3">
@@ -171,7 +171,7 @@ function QuickJumpSidebar() {
           <a
             key={section.category}
             href={`#${section.category}`}
-            className="text-xl font-medium text-dark-blue hover:text-black hover:translate-x-1 transition-all text-center font-body"
+            className="text-xl font-medium text-peach hover:text-black hover:translate-x-1 transition-all text-center font-body"
           >
             {section.category}
           </a>

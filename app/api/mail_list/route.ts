@@ -1,27 +1,17 @@
 import { NextResponse } from "next/server";
 import { pool } from "@/app/lib/db";
-import { ratelimit } from "@/lib/ratelimit";
 import { Resend } from "resend";
+import { notifySlack } from "@/lib/slack";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(req: Request) {
   try {
-    const ip = req.headers.get("x-forwarded-for") ?? "127.0.0.1";
-    const { success } = await ratelimit.limit(ip);
-
-    if (!success) {
-      return NextResponse.json(
-        { error: "Too many requests" },
-        { status: 429 }
-      );
-    }
-
     const { email } = await req.json();
 
     if (typeof email !== "string") {
-  return NextResponse.json({ error: "Invalid email" }, { status: 400 });
-}
+      return NextResponse.json({ error: "Invalid email" }, { status: 400 });
+    }
 
     if (!email) {
       return NextResponse.json(
@@ -51,12 +41,17 @@ export async function POST(req: Request) {
     }
 
     // -------------------------
-    // 2. Generate email with Groq
+    // 2. Notify admin via Slack
+    // -------------------------
+    notifySlack(`📧 *New Newsletter Subscriber*\n${email} just subscribed to the mailing list.`);
+
+    // -------------------------
+    // 3. Generate welcome email with Groq
     // -------------------------
     const html = await generateWelcomeMail(email);
 
     // -------------------------
-    // 3. Send using Resend
+    // 4. Send using Resend
     // -------------------------
     await resend.emails.send({
       from: "Bakery <onboarding@resend.dev>",
@@ -76,14 +71,15 @@ export async function POST(req: Request) {
   }
 }
 
+
 /* -------------------------------
    Groq helper
 --------------------------------*/
 async function generateWelcomeMail(email: string) {
   console.log(
-  "GROQ KEY LENGTH:",
-  process.env.GROQ_API_KEY?.length
-);
+    "GROQ KEY LENGTH:",
+    process.env.GROQ_API_KEY?.length
+  );
 
 
   const res = await fetch(
