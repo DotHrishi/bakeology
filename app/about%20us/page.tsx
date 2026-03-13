@@ -87,14 +87,14 @@ const Page = () => {
         </div>
 
         {/* Hero Content */}
-        <div className="relative z-10 text-center px-6 max-w-5xl">
+        <div className="relative z-10 text-center px-4 sm:px-6 max-w-5xl">
           <h1
             ref={heroTextRef}
-            className="text-6xl md:text-8xl font-bold text-white font-body mb-6 drop-shadow-lg leading-tight"
+            className="text-4xl sm:text-6xl md:text-8xl font-bold text-white font-body mb-4 sm:mb-6 drop-shadow-lg leading-tight"
           >
             Crafting Memories, <br /> One Slice at a Time
           </h1>
-          <p className="text-xl md:text-2xl text-white/90 font-body font-light tracking-wide animate-fade-in-up delay-1000">
+          <p className="text-base sm:text-xl md:text-2xl text-white/90 font-body font-light tracking-wide">
             Where passion meets premium ingredients to create edible art.
           </p>
         </div>
@@ -106,11 +106,11 @@ const Page = () => {
       </div>
 
       {/* OUR STORY */}
-      <section className="relative py-24 px-6 md:px-12 bg-white overflow-hidden">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+      <section className="relative py-14 sm:py-20 md:py-24 px-4 sm:px-6 md:px-12 bg-white overflow-hidden">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 md:gap-16 items-center">
           {/* Text Content */}
           <div ref={storyRef} className="space-y-8">
-            <h2 className="text-5xl md:text-6xl text-dark-blue font-body font-bold underline underline-offset-8 decoration-gold">
+            <h2 className="text-3xl sm:text-5xl md:text-6xl text-dark-blue font-body font-bold underline underline-offset-8 decoration-gold">
               Our Story
             </h2>
             <p className="text-lg md:text-xl text-dark-blue/80 font-body leading-relaxed">
@@ -145,7 +145,7 @@ const Page = () => {
           </div>
 
           {/* Image/Visual */}
-          <div className="relative h-[600px] w-full rounded-full overflow-hidden border-4 border-gold shadow-2xl rotate-3 hover:rotate-0 transition-transform duration-700 ease-out">
+          <div className="relative h-[320px] sm:h-[480px] md:h-[600px] w-full rounded-2xl md:rounded-full overflow-hidden border-4 border-gold shadow-2xl md:rotate-3 md:hover:rotate-0 transition-transform duration-700 ease-out">
             <Image
               src="/hero.png"
               alt="Our Kitchen"
@@ -158,9 +158,9 @@ const Page = () => {
       </section>
 
       {/* GALLERY STRIP */}
-      <section className="bg-dark-blue py-20 text-white overflow-hidden">
-        <div className="text-center mb-16">
-          <h2 className="text-5xl font-body font-bold text-gold mb-4">Newly Added</h2>
+      <section className="bg-dark-blue py-12 sm:py-20 text-white overflow-hidden">
+        <div className="text-center mb-10 sm:mb-16">
+          <h2 className="text-3xl sm:text-5xl font-body font-bold text-gold mb-4">Newly Added</h2>
           <p className="text-white/70 font-body text-lg">Swipe through our latest masterpieces</p>
         </div>
 
@@ -168,16 +168,16 @@ const Page = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-32 bg-[url('/hero2.png')] bg-cover bg-fixed bg-center relative">
+      <section className="py-20 sm:py-32 bg-[url('/hero2.png')] bg-cover bg-scroll md:bg-fixed bg-center relative">
         <div className="absolute inset-0 bg-black/70"></div>
         <div className="relative z-10 text-center text-white px-6">
-          <h2 className="text-5xl md:text-7xl font-body font-bold mb-8">Ready to Indulge?</h2>
-          <p className="text-xl md:text-2xl font-body font-light mb-12 max-w-2xl mx-auto text-white/90">
-            Let's turn your dream dessert into reality. Place your order today and experience the Bakelogy difference.
+          <h2 className="text-3xl sm:text-5xl md:text-7xl font-body font-bold mb-6 sm:mb-8">Ready to Indulge?</h2>
+          <p className="text-base sm:text-xl md:text-2xl font-body font-light mb-8 sm:mb-12 max-w-2xl mx-auto text-white/90">
+            Let&apos;s turn your dream dessert into reality. Place your order today and experience the Bakelogy difference.
           </p>
           <Link
             href="/order now"
-            className="inline-flex items-center gap-3 px-10 py-5 bg-gold text-dark-blue font-bold text-2xl rounded-full hover:bg-white hover:text-dark-blue transition-all transform hover:scale-105 shadow-xl font-body"
+            className="inline-flex items-center gap-3 px-7 sm:px-10 py-4 sm:py-5 bg-gold text-dark-blue font-bold text-lg sm:text-2xl rounded-full hover:bg-white hover:text-dark-blue transition-all transform hover:scale-105 shadow-xl font-body"
           >
             Order Now <ArrowRight />
           </Link>

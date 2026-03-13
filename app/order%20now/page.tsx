@@ -97,10 +97,10 @@ export default function MenuPage() {
         </div>
 
         <div className="relative z-10 text-center px-4">
-          <h1 className="text-6xl md:text-8xl text-white font-body font-bold drop-shadow-lg mb-4">
+          <h1 className="text-4xl sm:text-6xl md:text-8xl text-white font-body font-bold drop-shadow-lg mb-4">
             Our Creations
           </h1>
-          <p className="text-xl text-white/90 font-body tracking-widest uppercase">
+          <p className="text-base sm:text-xl text-white/90 font-body tracking-widest uppercase">
             <span className="text-peach">- Order Now -</span>
           </p>
         </div>
@@ -110,21 +110,21 @@ export default function MenuPage() {
         </div>
       </section>
 
-      <main className="menu-main px-6 py-20 max-w-7xl mx-auto space-y-32 xl:pr-72">
+      <main className="menu-main px-4 sm:px-6 py-10 sm:py-16 md:py-20 max-w-7xl mx-auto space-y-16 sm:space-y-24 lg:space-y-32 xl:pr-72">
         {menuData.map((section) => (
           <section
             key={section.category}
             id={section.category}
             className="menu-section scroll-mt-40"
           >
-            <div className="flex items-center gap-6 mb-12">
-              <h2 className="text-5xl font-bold text-dark-blue font-body flex-shrink-0">
+            <div className="flex items-center gap-4 sm:gap-6 mb-8 sm:mb-12">
+              <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-dark-blue font-body flex-shrink-0">
                 {section.category}
               </h2>
               <div className="h-[1px] bg-dark-blue/10 flex-grow" />
             </div>
 
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10">
               {section.items.map((item) => (
                 <div
                   key={item.name}
@@ -145,12 +145,12 @@ export default function MenuPage() {
       </main>
 
       {/* FINAL CTA */}
-      <section className="py-20 bg-dark-blue text-center text-white">
-        <p className="text-2xl font-body mb-6 max-w-2xl mx-auto px-6">
-          "One cannot think well, love well, sleep well, if one has not dined well."
+      <section className="py-12 sm:py-20 bg-dark-blue text-center text-white">
+        <p className="text-lg sm:text-2xl font-body mb-4 sm:mb-6 max-w-2xl mx-auto px-6">
+          &ldquo;One cannot think well, love well, sleep well, if one has not dined well.&rdquo;
         </p>
-        <p className="text-gold font-body text-3xl">
-          ― Virginia Woolf
+        <p className="text-gold font-body text-xl sm:text-3xl">
+          &mdash; Virginia Woolf
         </p>
       </section>
 

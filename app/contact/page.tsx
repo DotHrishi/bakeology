@@ -12,11 +12,11 @@ const Page = () => {
       <Navbar />
       <Toaster position="top-center" />
 
-      <div className="flex-grow flex items-center justify-center p-4 md:p-8 backdrop-blur-xs pt-24 md:pt-32">
-        <div className="w-full max-w-6xl bg-white/10 backdrop-blur-md rounded-3xl shadow-2xl overflow-hidden border border-gold border-2 flex flex-col md:flex-row">
+      <div className="flex-grow flex items-start justify-center p-3 sm:p-4 md:p-8 backdrop-blur-xs pt-6 sm:pt-10 md:pt-20 pb-12">
+        <div className="w-full max-w-6xl bg-white/10 backdrop-blur-md rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden border border-gold border-2 flex flex-col md:flex-row">
 
           {/* Left Side - Contact Info & Branding */}
-          <div className="w-full md:w-5/12 bg-dark-blue/90 p-8 md:p-12 text-white flex flex-col justify-between relative overflow-hidden">
+          <div className="w-full md:w-5/12 bg-dark-blue/90 p-6 sm:p-8 md:p-12 text-white flex flex-col justify-between relative overflow-hidden">
             {/* Decorative circles */}
             <div className="absolute top-0 left-0 w-32 h-32 bg-gold/20 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
             <div className="absolute bottom-0 right-0 w-40 h-40 bg-peach/20 rounded-full blur-3xl translate-x-1/3 translate-y-1/3"></div>
@@ -83,7 +83,7 @@ const Page = () => {
           </div>
 
           {/* Right Side - Form */}
-          <div className="w-full md:w-7/12 bg-white p-8 md:p-12">
+          <div className="w-full md:w-7/12 bg-white p-5 sm:p-8 md:p-12">
             <h1 className="text-3xl md:text-4xl font-bold mb-2 text-dark-blue font-body">
               Contact Us for Bulk Orders
             </h1>

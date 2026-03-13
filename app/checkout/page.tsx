@@ -232,19 +232,20 @@ export default function CheckoutPage() {
 
       {/* CONFIRMATION MODAL */}
       {confirmed && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm px-6">
-          <div className="bg-white rounded-3xl shadow-2xl p-10 max-w-md w-full text-center flex flex-col items-center gap-6 animate-in fade-in zoom-in duration-300">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm px-4 sm:px-6">
+          <div className="bg-white rounded-3xl shadow-2xl p-6 sm:p-10 max-w-md w-full text-center flex flex-col items-center gap-4 sm:gap-6 animate-in fade-in zoom-in duration-300">
             <div className="w-20 h-20 rounded-full bg-dark-blue flex items-center justify-center shadow-lg">
               <CheckCircle className="text-gold w-10 h-10" strokeWidth={1.5} />
             </div>
             <div>
-              <h2 className="text-3xl font-body font-bold text-dark-blue mb-2">Order Confirmed!</h2>
+            <h2 className="text-2xl sm:text-3xl font-body font-bold text-dark-blue mb-2">Order Confirmed!</h2>
               {orderId && (
                 <p className="text-dark-blue bg-dark-blue/10 font-body font-bold text-lg px-4 py-2 rounded-lg mb-2">
                   Order ID: #{orderId}
                 </p>
               )}
               <p className="text-dark-gray font-body text-lg">We&apos;ll get back to you soon!</p>
+              <p className="text-red-300">Check your email for order details.</p>
             </div>
             <button
               onClick={handleDone}

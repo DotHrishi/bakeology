@@ -135,8 +135,8 @@ export default function Home() {
       <main ref={rootRef} className="bg-beige overflow-hidden">
 
         {/* ================= HERO ================= */}
-        <section className="min-h-[calc(100vh-80px)] flex items-center px-6">
-          <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+        <section className="min-h-[calc(100vh-80px)] flex items-center px-4 sm:px-6 py-10 lg:py-0">
+          <div className="max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
 
             {/* LEFT */}
             <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
@@ -169,12 +169,12 @@ export default function Home() {
             </div>
 
             {/* RIGHT */}
-            <div className="relative hero-image">
+            <div className="relative hero-image mt-4 lg:mt-0">
               {/* FRAME — BEHIND IMAGE */}
-              <div className="absolute -top-6 -left-6 w-full h-full border border-dark-blue/40 rounded-3xl z-0 pointer-events-none" />
+              <div className="absolute -top-6 -left-6 w-full h-full border border-dark-blue/40 rounded-3xl z-0 pointer-events-none hidden sm:block" />
 
               {/* IMAGE — ABOVE FRAME */}
-              <div className="relative z-10 w-full h-[420px] sm:h-[500px] rounded-3xl overflow-hidden shadow-xl bg-light-gray">
+              <div className="relative z-10 w-full h-[280px] sm:h-[420px] lg:h-[500px] rounded-3xl overflow-hidden shadow-xl bg-light-gray">
                 <img
                   src="/hero.png"
                   alt="Bakelogy desserts"
@@ -190,17 +190,17 @@ export default function Home() {
         </section>
 
         {/* ================= SECTION 2 ================= */}
-        <section className="section-2 relative py-36 bg-beige">
+        <section className="section-2 relative py-16 sm:py-24 lg:py-36 bg-beige">
 
           {/* COLOR ACCENTS */}
           <div className="absolute top-24 left-20 w-[300px] h-[300px] bg-peach opacity-30 blur-[120px] rounded-full" />
           <div className="absolute bottom-24 right-24 w-[260px] h-[260px] bg-gold opacity-20 blur-[120px] rounded-full" />
 
-          <div className="relative max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-20 items-center">
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 grid lg:grid-cols-2 gap-10 lg:gap-20 items-center">
 
             {/* LEFT — IMAGE */}
             <div className="section-image relative">
-              <div className="relative w-full h-[460px] sm:h-[520px] rounded-3xl overflow-hidden shadow-xl">
+              <div className="relative w-full h-[280px] sm:h-[380px] md:h-[460px] lg:h-[520px] rounded-3xl overflow-hidden shadow-xl">
                 <img
                   src="/hero2.png"
                   alt="Bakelogy desserts"
@@ -268,7 +268,7 @@ export default function Home() {
 
 
         {/* ================= SECTION 3 : BRAND STATEMENT ================= */}
-        <section className="section-3 relative py-40 bg-beige">
+        <section className="section-3 relative py-16 sm:py-24 lg:py-40 bg-beige">
           <div className="max-w-5xl mx-auto px-6 text-center">
 
             <h2 className="manifesto-line font-body text-3xl sm:text-4xl lg:text-5xl font-bold text-dark-blue leading-tight mb-12">

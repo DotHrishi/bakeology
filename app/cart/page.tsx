@@ -16,7 +16,7 @@ const { items, addItem, removeItem, count, total } = useCart();
       <Navbar />
 
       <div className="max-w-4xl mx-auto w-full px-6 py-12 flex-grow">
-        <h1 className="text-dark-blue font-body font-bold text-5xl mb-12 text-center underline underline-offset-8 decoration-gold">
+        <h1 className="text-dark-blue font-body font-bold text-3xl sm:text-5xl mb-8 sm:mb-12 text-center underline underline-offset-8 decoration-gold">
           My Cart
         </h1>
 
@@ -39,7 +39,7 @@ const { items, addItem, removeItem, count, total } = useCart();
 {Object.entries(items).map(([name, { quantity, image, price }]) => (
                 <div
                   key={name}
-                  className="flex text-2xl items-center gap-6 p-6"
+                  className="flex items-center gap-3 sm:gap-6 p-4 sm:p-6"
                 >
                   {/* IMAGE */}
                   {/* <div className="relative w-28 h-28 overflow-hidden shadow-sm rounded-md">
@@ -52,15 +52,15 @@ const { items, addItem, removeItem, count, total } = useCart();
                   </div> */}
 
                   {/* DETAILS */}
-                  <div className="flex-grow">
-                    <h3 className="text-md font-bold text-dark-blue font-body mb-1">
+                  <div className="flex-grow min-w-0">
+                    <h3 className="text-sm sm:text-base font-bold text-dark-blue font-body mb-1 truncate">
                       {name}
                     </h3>
-<p className="text-sm text-black font-body">₹{quantity * price} <span className="text-black/40 ml-3">(₹{price} × {quantity})</span></p>
+                    <p className="text-xs sm:text-sm text-black font-body">₹{quantity * price} <span className="text-black/40 ml-1 sm:ml-3">(₹{price} × {quantity})</span></p>
                   </div>
 
                   {/* QUANTITY CONTROLS */}
-                  <div className="flex items-center gap-4 bg-white border border-gold rounded-full p-1 shadow-sm">
+                  <div className="flex items-center gap-2 sm:gap-4 bg-white border border-gold rounded-full p-1 shadow-sm flex-shrink-0">
                     <button
                       onClick={() => removeItem(name)}
                       className="w-8 h-8 flex items-center justify-center bg-white hover:bg-dark-blue hover:text-gold text-dark-blue rounded-full transition shadow-sm active:scale-95"
@@ -69,7 +69,7 @@ const { items, addItem, removeItem, count, total } = useCart();
                       {quantity === 1 ? <Trash2 size={16} /> : <Minus size={16} />}
                     </button>
 
-                    <span className="font-bold text-xl min-w-[24px] text-center text-dark-blue font-body selection:bg-gold/30">
+                    <span className="font-bold text-base sm:text-xl min-w-[20px] sm:min-w-[24px] text-center text-dark-blue font-body selection:bg-gold/30">
                       {quantity}
                     </span>
 
@@ -86,7 +86,7 @@ onClick={() => addItem(name, image, price)}
             </div>
 
             {/* TOTAL & CHECKOUT */}
-            <div className="p-8 bg-gold/25 backdrop-blur-sm border-t border-dark-gray/10 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div className="p-5 sm:p-8 bg-gold/25 backdrop-blur-sm border-t border-dark-gray/10 flex flex-col sm:flex-row justify-between items-center gap-4 sm:gap-6">
               <div className="flex flex-col gap-5">
                 <div className="flex items-center gap-4">
                   <span className="text-dark-blue font-body tracking-wider text-md font-semibold">Items:</span>
@@ -99,8 +99,7 @@ onClick={() => addItem(name, image, price)}
               </div>
 
               <div className="flex flex-col items-center gap-1">
-                <Link href="/checkout" className="px-12 py-4 bg-gold text-dark-blue font-bold text-xl border-2 border-dark-blue rounded-full
-                             hover:bg-dark-blue hover:text-gold hover:border-2 hover:border-gold hover:shadow-gold/20 shadow-xl font-body transform hover:-translate-y-1 transition-all duration-300">
+              <Link href="/checkout" className="px-8 sm:px-12 py-3 sm:py-4 bg-gold text-dark-blue font-bold text-base sm:text-xl border-2 border-dark-blue rounded-full hover:bg-dark-blue hover:text-gold hover:border-2 hover:border-gold hover:shadow-gold/20 shadow-xl font-body transform hover:-translate-y-1 transition-all duration-300">
                   Proceed to Confirm
                 </Link>
                 <p className="text-xs text-dark-gray/120 font-body italic">

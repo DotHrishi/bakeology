@@ -67,7 +67,7 @@ const Footer = () => {
                 }
 
               }}
-              className="flex flex-col md:flex-row justify-between items-center bg-white/5 backdrop-blur-lg rounded-3xl p-8 mb-20 border border-white/10"
+              className="flex flex-col md:flex-row justify-between items-center bg-white/5 backdrop-blur-lg rounded-3xl p-6 sm:p-8 mb-10 sm:mb-20 gap-6 md:gap-0 border border-white/10"
             >
               <div className="mb-6 md:mb-0">
                 <h3 className="text-2xl font-body text-gold mb-2">
@@ -78,14 +78,14 @@ const Footer = () => {
                 </p>
               </div>
 
-              <div className="flex w-full md:w-auto gap-2">
+              <div className="flex w-full md:w-auto gap-2 flex-col xs:flex-row sm:flex-row">
                 <input
                   suppressHydrationWarning
                   type="email"
                   name="email"
                   required
                   placeholder="Your email address"
-                  className="bg-white/10 border border-white/10 rounded-full px-6 py-3 text-white placeholder:text-white/40 focus:outline-none focus:border-gold w-full md:w-80"
+                  className="bg-white/10 border border-white/10 rounded-full px-5 py-3 text-white placeholder:text-white/40 focus:outline-none focus:border-gold w-full md:w-72 lg:w-80"
                 />
 
                 <button
@@ -100,10 +100,10 @@ const Footer = () => {
           )}
 
           {/* TOP GRID */}
-          <div className="grid md:grid-cols-4 gap-12 mb-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 sm:gap-12 mb-10">
 
             {/* BRAND */}
-            <div className="col-span-1 md:col-span-2">
+            <div className="col-span-1 sm:col-span-2">
               <Link href="/" className="inline-block mb-6">
                 <h3 className="font-body text-3xl font-bold text-white"><img src="/bakeology-text.png" alt="Bakelogy" className='w-100' /></h3>
               </Link>
@@ -159,8 +159,8 @@ const Footer = () => {
                 </li>
                 <li>
                   <a href="mailto:hello@bakeologynagpur.in" className="hover:text-gold transition flex items-center gap-3">
-                    <Mail size={18} className="text-gold" />
-                    <span>hello@bakeologynagpur.in</span>
+                    <Mail size={18} className="text-gold flex-shrink-0" />
+                    <span className="break-all">hello@bakeologynagpur.in</span>
                   </a>
                 </li>
               </ul>
