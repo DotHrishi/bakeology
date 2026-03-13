@@ -72,7 +72,7 @@ export default function Navbar() {
           {/* DESKTOP CONTENT */}
           <div className="hidden md:flex items-center gap-10">
             <NavLinks />
-            <div className="text-gold font-extrabold font-serif">|</div>
+            <div className="text-gold font-extrabold font-body">|</div>
             <CartIcon />
           </div>
 
@@ -92,7 +92,7 @@ export default function Navbar() {
 
       {/* MOBILE MENU OVERLAY */}
       <div className={`fixed inset-0 bg-dark-blue z-40 flex flex-col items-center justify-center gap-12 transition-all duration-500 ${isMobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
-        <div className="flex flex-col items-center gap-8 text-3xl font-heading font-bold text-white">
+        <div className="flex flex-col items-center gap-8 text-3xl font-body font-bold text-white">
           <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-gold transition">Home</Link>
           <Link href="/order now" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-gold text-peach transition">Order Now</Link>
           <Link href="/about us" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-gold transition">About Us</Link>
@@ -101,7 +101,7 @@ export default function Navbar() {
 
         <div className="w-16 h-[1px] bg-white/20" />
 
-        <Link href="/cart" onClick={() => setIsMobileMenuOpen(false)} className="flex items-center gap-3 text-2xl text-gold font-heading">
+        <Link href="/cart" onClick={() => setIsMobileMenuOpen(false)} className="flex items-center gap-3 text-2xl text-gold font-body">
           <ShoppingBag size={24} />
           <span>My Cart</span>
         </Link>
@@ -170,9 +170,9 @@ function NavContentCompact() {
         />
       </Link>
 
-      <div className="flex items-center gap-6 text-xl font-medium font-body">
+        <div className="flex items-center gap-6 text-xl font-medium font-body">
         <NavLinks />
-        <div className="text-gold font-extrabold font-serif">|</div>
+        <div className="text-gold font-extrabold font-body">|</div>
         <CartIcon compact />
       </div>
     </>

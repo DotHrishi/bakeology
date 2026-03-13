@@ -9,7 +9,7 @@ import { Plus, Minus, Trash2 } from "lucide-react";
 import Link from "next/link";
 
 const Page = () => {
-  const { items, addItem, removeItem, count } = useCart();
+const { items, addItem, removeItem, count, total } = useCart();
 
   return (
     <div className="min-h-screen flex flex-col bg-beige">
@@ -17,7 +17,7 @@ const Page = () => {
 
       <div className="max-w-4xl mx-auto w-full px-6 py-12 flex-grow">
         <h1 className="text-dark-blue font-body font-bold text-5xl mb-12 text-center underline underline-offset-8 decoration-gold">
-          Your Cart
+          My Cart
         </h1>
 
         {count === 0 ? (
@@ -34,12 +34,12 @@ const Page = () => {
             </Link>
           </div>
         ) : (
-          <div className="bg-dark-blue backdrop-blur-md rounded-md shadow-xl overflow-hidden border border-white/50">
+          <div className="bg-white backdrop-blur-md rounded-md shadow-xl overflow-hidden border border-black/50">
             <div className="divide-y divide-dark-gray/10">
-              {Object.entries(items).map(([name, { quantity, image }]) => (
+{Object.entries(items).map(([name, { quantity, image, price }]) => (
                 <div
                   key={name}
-                  className="flex items-center gap-6 p-6"
+                  className="flex text-2xl items-center gap-6 p-6"
                 >
                   {/* IMAGE */}
                   {/* <div className="relative w-28 h-28 overflow-hidden shadow-sm rounded-md">
@@ -53,9 +53,10 @@ const Page = () => {
 
                   {/* DETAILS */}
                   <div className="flex-grow">
-                    <h3 className="text-md font-bold text-gold font-body mb-2">
+                    <h3 className="text-md font-bold text-gold font-body mb-1">
                       {name}
                     </h3>
+<p className="text-sm text-black font-body">₹{quantity * price} <span className="text-black/40 ml-3">(₹{price} × {quantity})</span></p>
                   </div>
 
                   {/* QUANTITY CONTROLS */}
@@ -73,7 +74,7 @@ const Page = () => {
                     </span>
 
                     <button
-                      onClick={() => addItem(name, image)}
+onClick={() => addItem(name, image, price)}
                       className="w-8 h-8 flex items-center justify-center bg-dark-blue text-gold hover:bg-gold hover:text-dark-blue rounded-full transition shadow-sm active:scale-95"
                       aria-label="Increase quantity"
                     >
@@ -85,16 +86,27 @@ const Page = () => {
             </div>
 
             {/* TOTAL & CHECKOUT */}
-            <div className="p-8 bg-white backdrop-blur-sm border-t border-dark-gray/10 flex flex-col md:flex-row justify-between items-center gap-6">
-              <div className="flex items-center gap-2">
-                <span className="text-dark-blue font-body tracking-wider text-md font-semibold">Total Items:</span>
-                <span className="text-2xl font-bold text-dark-blue font-body">{count}</span>
+            <div className="p-8 bg-gold/25 backdrop-blur-sm border-t border-dark-gray/10 flex flex-col md:flex-row justify-between items-center gap-6">
+              <div className="flex flex-col gap-5">
+                <div className="flex items-center gap-4">
+                  <span className="text-dark-blue font-body tracking-wider text-md font-semibold">Items:</span>
+                  <span className="text-md font-bold text-dark-blue font-body">{count}</span>
+                </div>
+                <div className="flex items-center gap-4">
+                  <span className="text-dark-blue font-body tracking-wider text-md font-semibold">Total:</span>
+                  <span className="text-2xl font-bold text-dark-blue font-body underline underline-offset-8 decoration-dark-blue">₹{total}</span>
+                </div>
               </div>
 
-              <button className="px-12 py-4 bg-gold text-dark-blue font-bold text-xl border-2 border-dark-blue rounded-full
+              <div className="flex flex-col items-center gap-1">
+                <Link href="/checkout" className="px-12 py-4 bg-gold text-dark-blue font-bold text-xl border-2 border-dark-blue rounded-full
                              hover:bg-dark-blue hover:text-gold hover:border-2 hover:border-gold hover:shadow-gold/20 shadow-xl font-body transform hover:-translate-y-1 transition-all duration-300">
-                Proceed to Confirm
-              </button>
+                  Proceed to Confirm
+                </Link>
+                <p className="text-xs text-dark-gray/120 font-body italic">
+                  *All prices are inclusive of GST
+                </p>
+              </div>
             </div>
           </div>
         )}

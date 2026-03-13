@@ -94,7 +94,7 @@ const Page = () => {
           >
             Crafting Memories, <br /> One Slice at a Time
           </h1>
-          <p className="text-xl md:text-2xl text-white/90 font-heading font-light tracking-wide animate-fade-in-up delay-1000">
+          <p className="text-xl md:text-2xl text-white/90 font-body font-light tracking-wide animate-fade-in-up delay-1000">
             Where passion meets premium ingredients to create edible art.
           </p>
         </div>
@@ -106,7 +106,7 @@ const Page = () => {
       </div>
 
       {/* OUR STORY */}
-      <section className="relative py-24 px-6 md:px-12 bg-beige overflow-hidden">
+      <section className="relative py-24 px-6 md:px-12 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
           {/* Text Content */}
           <div ref={storyRef} className="space-y-8">
@@ -126,19 +126,19 @@ const Page = () => {
                   <div className="w-12 h-12 rounded-full bg-dark-blue text-gold flex items-center justify-center">
                     <Star size={24} fill="currentColor" />
                   </div>
-                  <span className="font-heading font-bold text-dark-blue">5-Star Rated</span>
+                  <span className="font-body font-bold text-dark-blue">5-Star Rated</span>
                 </div>
                 <div className="flex flex-col items-center gap-2">
                   <div className="w-12 h-12 rounded-full bg-dark-blue text-gold flex items-center justify-center">
                     <Heart size={24} fill="currentColor" />
                   </div>
-                  <span className="font-heading font-bold text-dark-blue">Made with Love</span>
+                  <span className="font-body font-bold text-dark-blue">Made with Love</span>
                 </div>
                 <div className="flex flex-col items-center gap-2">
                   <div className="w-12 h-12 rounded-full bg-dark-blue text-gold flex items-center justify-center">
                     <Award size={24} />
                   </div>
-                  <span className="font-heading font-bold text-dark-blue">Award Winning</span>
+                  <span className="font-body font-bold text-dark-blue">Award Winning</span>
                 </div>
               </div>
             </div>
@@ -172,7 +172,7 @@ const Page = () => {
         <div className="absolute inset-0 bg-black/70"></div>
         <div className="relative z-10 text-center text-white px-6">
           <h2 className="text-5xl md:text-7xl font-body font-bold mb-8">Ready to Indulge?</h2>
-          <p className="text-xl md:text-2xl font-light mb-12 max-w-2xl mx-auto text-white/90">
+          <p className="text-xl md:text-2xl font-body font-light mb-12 max-w-2xl mx-auto text-white/90">
             Let's turn your dream dessert into reality. Place your order today and experience the Bakelogy difference.
           </p>
           <Link

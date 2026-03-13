@@ -70,7 +70,7 @@ const Footer = () => {
               className="flex flex-col md:flex-row justify-between items-center bg-white/5 backdrop-blur-lg rounded-3xl p-8 mb-20 border border-white/10"
             >
               <div className="mb-6 md:mb-0">
-                <h3 className="text-2xl font-heading text-gold mb-2">
+                <h3 className="text-2xl font-body text-gold mb-2">
                   Join our Sweet Circle
                 </h3>
                 <p className="text-white/60 font-body">
@@ -105,7 +105,7 @@ const Footer = () => {
             {/* BRAND */}
             <div className="col-span-1 md:col-span-2">
               <Link href="/" className="inline-block mb-6">
-                <h3 className="font-heading text-3xl font-bold text-white"><img src="/bakeology-text.png" alt="Bakelogy" className='w-100' /></h3>
+                <h3 className="font-body text-3xl font-bold text-white"><img src="/bakeology-text.png" alt="Bakelogy" className='w-100' /></h3>
               </Link>
               <p className="font-body text-white/60 leading-relaxed max-w-sm mb-8">
                 A home-baking studio based in Nagpur, crafting premium desserts for

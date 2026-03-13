@@ -80,7 +80,7 @@ export default function MenuPage() {
   }, []);
 
   return (
-    <div className="bg-beige min-h-screen">
+    <div className="bg-white min-h-screen">
       <Navbar />
 
       {/* MENU HERO */}
@@ -100,7 +100,7 @@ export default function MenuPage() {
           <h1 className="text-6xl md:text-8xl text-white font-body font-bold drop-shadow-lg mb-4">
             Our Creations
           </h1>
-          <p className="text-xl text-white/90 font-heading tracking-widest uppercase">
+          <p className="text-xl text-white/90 font-body tracking-widest uppercase">
             <span className="text-peach">- Order Now -</span>
           </p>
         </div>
@@ -146,7 +146,7 @@ export default function MenuPage() {
 
       {/* FINAL CTA */}
       <section className="py-20 bg-dark-blue text-center text-white">
-        <p className="text-2xl font-heading mb-6 max-w-2xl mx-auto px-6">
+        <p className="text-2xl font-body mb-6 max-w-2xl mx-auto px-6">
           "One cannot think well, love well, sleep well, if one has not dined well."
         </p>
         <p className="text-gold font-body text-3xl">

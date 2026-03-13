@@ -146,7 +146,7 @@ export default function Home() {
                 className="hero-logo w-24 mb-6"
               />
 
-              <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-dark-blue">
+              <h1 className="font-body text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-dark-blue">
                 <span className="hero-text-line block">Baked with Love,</span>
                 <span className="hero-text-line block text-gold">Served with Elegance</span>
               </h1>
@@ -190,7 +190,7 @@ export default function Home() {
         </section>
 
         {/* ================= SECTION 2 ================= */}
-        <section className="section-2 relative py-36 bg-light-gray">
+        <section className="section-2 relative py-36 bg-beige">
 
           {/* COLOR ACCENTS */}
           <div className="absolute top-24 left-20 w-[300px] h-[300px] bg-peach opacity-30 blur-[120px] rounded-full" />
@@ -212,7 +212,7 @@ export default function Home() {
 
             {/* RIGHT — CONTENT */}
             <div>
-              <h2 className="section-head font-heading text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-8 text-dark-blue">
+              <h2 className="section-head font-body text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-8 text-dark-blue">
                 Crafted thoughtfully.
                 <br />
                 <span className="text-gold">Delivered with care.</span>
@@ -226,9 +226,9 @@ export default function Home() {
 
               <div className="space-y-10">
                 <div className="value-item flex gap-6">
-                  <span className="font-heading text-4xl text-gold">01</span>
+                  <span className="font-body text-4xl text-gold">01</span>
                   <div>
-                    <h3 className="font-heading text-xl font-semibold mb-2">
+                    <h3 className="font-body text-xl font-semibold mb-2">
                       Home-baked quality
                     </h3>
                     <p className="font-body text-dark-gray">
@@ -239,9 +239,9 @@ export default function Home() {
                 </div>
 
                 <div className="value-item flex gap-6">
-                  <span className="font-heading text-4xl text-gold">02</span>
+                  <span className="font-body text-4xl text-gold">02</span>
                   <div>
-                    <h3 className="font-heading text-xl font-semibold mb-2">
+                    <h3 className="font-body text-xl font-semibold mb-2">
                       Bulk orders, perfected
                     </h3>
                     <p className="font-body text-dark-gray">
@@ -251,9 +251,9 @@ export default function Home() {
                 </div>
 
                 <div className="value-item flex gap-6">
-                  <span className="font-heading text-4xl text-gold">03</span>
+                  <span className="font-body text-4xl text-gold">03</span>
                   <div>
-                    <h3 className="font-heading text-xl font-semibold mb-2">
+                    <h3 className="font-body text-xl font-semibold mb-2">
                       Loved across Nagpur
                     </h3>
                     <p className="font-body text-dark-gray">
@@ -271,7 +271,7 @@ export default function Home() {
         <section className="section-3 relative py-40 bg-beige">
           <div className="max-w-5xl mx-auto px-6 text-center">
 
-            <h2 className="manifesto-line font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-dark-blue leading-tight mb-12">
+            <h2 className="manifesto-line font-body text-3xl sm:text-4xl lg:text-5xl font-bold text-dark-blue leading-tight mb-12">
               Baking isn’t just a process.
               <br />
               <span className="text-gold">It’s a promise.</span>

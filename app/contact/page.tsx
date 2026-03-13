@@ -22,7 +22,7 @@ const Page = () => {
             <div className="absolute bottom-0 right-0 w-40 h-40 bg-peach/20 rounded-full blur-3xl translate-x-1/3 translate-y-1/3"></div>
 
             <div className="relative z-10">
-              <h2 className="text-3xl md:text-4xl font-bold font-heading text-gold mb-6">
+              <h2 className="text-3xl md:text-4xl font-bold font-body text-gold mb-6">
                 Get in Touch
               </h2>
               <p className="text-light-gray/80 font-body mb-12 text-lg">
@@ -35,7 +35,7 @@ const Page = () => {
                     <Phone className="w-6 h-6 text-gold" />
                   </div>
                   <div>
-                    <h3 className="font-heading text-xl text-white mb-1">Phone</h3>
+                    <h3 className="font-body text-xl text-white mb-1">Phone</h3>
                     <p className="font-body text-light-gray/80">+91 98765 43210</p>
                   </div>
                 </div>
@@ -45,7 +45,7 @@ const Page = () => {
                     <Mail className="w-6 h-6 text-gold" />
                   </div>
                   <div>
-                    <h3 className="font-heading text-xl text-white mb-1">Email</h3>
+                    <h3 className="font-body text-xl text-white mb-1">Email</h3>
                     <p className="font-body text-light-gray/80">hello@bakeology.com</p>
                   </div>
                 </div>
@@ -55,7 +55,7 @@ const Page = () => {
                     <MapPin className="w-6 h-6 text-gold" />
                   </div>
                   <div>
-                    <h3 className="font-heading text-xl text-white mb-1">Visit Us</h3>
+                    <h3 className="font-body text-xl text-white mb-1">Visit Us</h3>
                     <p className="font-body text-light-gray/80">
                       123 Baker Street, <br />
                       Foodie Town, FL 56789
@@ -68,7 +68,7 @@ const Page = () => {
                     <Instagram className="w-6 h-6 text-gold" />
                   </div>
                   <div>
-                    <h3 className="font-heading text-xl text-white mb-1">Social</h3>
+                    <h3 className="font-body text-xl text-white mb-1">Social</h3>
                     <a href="https://instagram.com/bakeology_nagpur" target="_blank" rel="noopener noreferrer" className="font-body text-light-gray/80 hover:text-gold transition-colors">
                       @bakeology_nagpur
                     </a>
@@ -83,8 +83,8 @@ const Page = () => {
           </div>
 
           {/* Right Side - Form */}
-          <div className="w-full md:w-7/12 bg-beige/95 p-8 md:p-12">
-            <h1 className="text-3xl md:text-4xl font-bold mb-2 text-dark-blue font-heading">
+          <div className="w-full md:w-7/12 bg-white p-8 md:p-12">
+            <h1 className="text-3xl md:text-4xl font-bold mb-2 text-dark-blue font-body">
               Contact Us for Bulk Orders
             </h1>
             <p className="text-dark-gray mb-8 font-body">Fill out the form below and we'll get back to you shortly.</p>

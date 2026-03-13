@@ -16,6 +16,7 @@ type MenuCardProps = {
 export default function MenuCard({ name, image, isFavorite, price = "₹--", description }: MenuCardProps) {
   const { addItem, removeItem, getItemCount } = useCart();
   const quantity = getItemCount(name);
+  const numericPrice = parseInt(price.replace(/[^0-9]/g, "")) || 0;
 
   // Mobile interaction: Click image to toggle description
   const [showDesc, setShowDesc] = useState(false);
@@ -23,7 +24,7 @@ export default function MenuCard({ name, image, isFavorite, price = "₹--", des
   const handleAdd = (e: React.MouseEvent) => {
     e.stopPropagation();
     e.preventDefault();
-    addItem(name, image);
+    addItem(name, image, numericPrice);
   };
 
   const handleRemove = (e: React.MouseEvent) => {
@@ -34,7 +35,7 @@ export default function MenuCard({ name, image, isFavorite, price = "₹--", des
 
   return (
     <div
-      className="group relative bg-white rounded-[2rem] p-5 shadow-[0_8px_30px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] hover:-translate-y-2 transition-all duration-500 h-full flex flex-col items-center text-center border border-transparent hover:border-gold/20"
+      className="group relative bg-beige rounded-[2rem] p-5 shadow-[0_8px_30px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] hover:-translate-y-2 transition-all duration-500 h-full flex flex-col items-center text-center border border-transparent hover:border-gold/20"
       onClick={() => setShowDesc(!showDesc)}
     >
 
@@ -59,7 +60,7 @@ export default function MenuCard({ name, image, isFavorite, price = "₹--", des
 
         {/* BADGE */}
         {isFavorite && (
-          <div className="absolute top-4 right-4 bg-dark-blue backdrop-blur-md text-peach text-[10px] font-bold px-3 py-1.5 rounded-full shadow-sm z-10 font-heading tracking-[0.2em] uppercase border border-gold/20">
+          <div className="absolute top-4 right-4 bg-dark-blue backdrop-blur-md text-peach text-[10px] font-bold px-3 py-1.5 rounded-full shadow-sm z-10 font-body tracking-[0.2em] uppercase border border-gold/20">
             <Star size={16} fill="currentColor" strokeWidth={3} />
           </div>
         )}
@@ -68,7 +69,7 @@ export default function MenuCard({ name, image, isFavorite, price = "₹--", des
       {/* CONTENT */}
       <div className="flex-grow flex flex-col justify-between w-full gap-5">
         <div>
-          <h3 className="text-2xl font-bold text-dark-blue font-heading leading-tight group-hover:text-gold transition-colors duration-300">
+          <h3 className="text-2xl font-bold text-dark-blue font-body leading-tight group-hover:text-gold transition-colors duration-300">
             {name}
           </h3>
           <div className="h-[2px] w-12 bg-gold/30 mx-auto mt-4 rounded-full group-hover:w-20 transition-all duration-500" />
@@ -90,7 +91,7 @@ export default function MenuCard({ name, image, isFavorite, price = "₹--", des
                 onClick={handleAdd}
                 className="w-full flex items-center justify-center gap-2 border border-dark-blue bg-transparent text-dark-blue py-3 rounded-full font-bold hover:bg-dark-blue hover:text-gold hover:border-dark-blue transition-all duration-300 group/btn shadow-[0_4px_14px_rgba(0,0,0,0.02)]"
               >
-                <span className="font-heading uppercase tracking-wider text-xs sm:text-sm whitespace-nowrap">Add To Cart</span>
+                <span className="font-body uppercase tracking-wider text-xs sm:text-sm whitespace-nowrap">Add To Cart</span>
                 <ShoppingBag size={14} className="opacity-0 -translate-x-2 group-hover/btn:opacity-100 group-hover/btn:translate-x-0 transition-all duration-300 hidden xl:block" />
               </button>
             ) : (
@@ -102,7 +103,7 @@ export default function MenuCard({ name, image, isFavorite, price = "₹--", des
                 >
                   <Minus size={14} />
                 </button>
-                <span className="font-heading text-xl text-white font-medium">{quantity}</span>
+                <span className="font-body text-xl text-white font-medium">{quantity}</span>
                 <button
                   suppressHydrationWarning
                   onClick={handleAdd}

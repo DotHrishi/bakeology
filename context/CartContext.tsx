@@ -5,14 +5,17 @@ import { createContext, useContext, useState } from "react";
 type CartItem = {
   quantity: number;
   image: string;
+  price: number;
 };
 
 type CartContextType = {
   count: number;
+  total: number;
   items: Record<string, CartItem>;
-  addItem: (name: string, image: string) => void;
+  addItem: (name: string, image: string, price: number) => void;
   removeItem: (name: string) => void;
   getItemCount: (name: string) => number;
+  clearCart: () => void;
 };
 
 const CartContext = createContext<CartContextType | null>(null);
@@ -21,13 +24,14 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   const [items, setItems] = useState<Record<string, CartItem>>({});
 
   const count = Object.values(items).reduce((acc, curr) => acc + curr.quantity, 0);
+  const total = Object.values(items).reduce((acc, curr) => acc + curr.price * curr.quantity, 0);
 
-  const addItem = (name: string, image: string) => {
+  const addItem = (name: string, image: string, price: number) => {
     setItems((prev) => {
-      const current = prev[name] || { quantity: 0, image };
+      const current = prev[name] || { quantity: 0, image, price };
       return {
         ...prev,
-        [name]: { ...current, quantity: current.quantity + 1, image },
+        [name]: { ...current, quantity: current.quantity + 1, image, price },
       };
     });
   };
@@ -46,9 +50,10 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   };
 
   const getItemCount = (name: string) => items[name]?.quantity || 0;
+  const clearCart = () => setItems({});
 
   return (
-    <CartContext.Provider value={{ count, items, addItem, removeItem, getItemCount }}>
+    <CartContext.Provider value={{ count, total, items, addItem, removeItem, getItemCount, clearCart }}>
       {children}
     </CartContext.Provider>
   );
