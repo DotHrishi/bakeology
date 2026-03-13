@@ -12,7 +12,7 @@ const Page = () => {
 const { items, addItem, removeItem, count, total } = useCart();
 
   return (
-    <div className="min-h-screen flex flex-col bg-beige">
+    <div className="min-h-screen flex flex-col bg-white">
       <Navbar />
 
       <div className="max-w-4xl mx-auto w-full px-6 py-12 flex-grow">
@@ -53,7 +53,7 @@ const { items, addItem, removeItem, count, total } = useCart();
 
                   {/* DETAILS */}
                   <div className="flex-grow">
-                    <h3 className="text-md font-bold text-gold font-body mb-1">
+                    <h3 className="text-md font-bold text-dark-blue font-body mb-1">
                       {name}
                     </h3>
 <p className="text-sm text-black font-body">₹{quantity * price} <span className="text-black/40 ml-3">(₹{price} × {quantity})</span></p>

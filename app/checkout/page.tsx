@@ -15,6 +15,8 @@ export default function CheckoutPage() {
   const [form, setForm] = useState({ name: "", phone: "", address: "", source: "" });
   const [loading, setLoading] = useState(false);
   const [confirmed, setConfirmed] = useState(false);
+  const [orderId, setOrderId] = useState<number | null>(null);
+  const [phoneError, setPhoneError] = useState("");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -22,6 +24,12 @@ export default function CheckoutPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!/^\d{10}$/.test(form.phone)) {
+      setPhoneError("Please enter a valid 10-digit phone number");
+      return;
+    }
+    setPhoneError("");
     setLoading(true);
 
     const orderItems = Object.entries(items).map(([name, { quantity, price }]) => ({
@@ -31,14 +39,18 @@ export default function CheckoutPage() {
       subtotal: quantity * price,
     }));
 
-    await fetch("/api/order", {
+    const res = await fetch("/api/order", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ ...form, items: orderItems, total }),
     });
+    const data = await res.json();
 
     setLoading(false);
-    setConfirmed(true);
+    if (data.success) {
+      setOrderId(data.id);
+      setConfirmed(true);
+    }
   };
 
   const handleDone = () => {
@@ -123,12 +135,20 @@ export default function CheckoutPage() {
                 name="phone"
                 type="tel"
                 required
-                placeholder="+91 98765 43210"
+                placeholder="9876543210"
+                maxLength={10}
                 value={form.phone}
-                onChange={handleChange}
-                className="w-full pl-10 pr-4 py-3 border border-dark-gray/30 rounded-lg font-body text-dark-blue focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold transition-all placeholder-dark-gray/40"
+                onChange={(e) => {
+                  const val = e.target.value.replace(/\D/g, "").slice(0, 10);
+                  setForm((prev) => ({ ...prev, phone: val }));
+                  if (phoneError) setPhoneError("");
+                }}
+                className={`w-full pl-10 pr-4 py-3 border rounded-lg font-body text-dark-blue focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold transition-all placeholder-dark-gray/40 ${
+                  phoneError ? "border-red-500" : "border-dark-gray/30"
+                }`}
               />
             </div>
+            {phoneError && <p className="text-red-500 text-xs font-body mt-1">{phoneError}</p>}
           </div>
 
           {/* ADDRESS */}
@@ -200,7 +220,12 @@ export default function CheckoutPage() {
             </div>
             <div>
               <h2 className="text-3xl font-body font-bold text-dark-blue mb-2">Order Confirmed!</h2>
-              <p className="text-dark-gray font-body text-lg">We'll get back to you soon!</p>
+              {orderId && (
+                <p className="text-dark-blue bg-dark-blue/10 font-body font-bold text-lg px-4 py-2 rounded-lg mb-2">
+                  Order ID: #{orderId}
+                </p>
+              )}
+              <p className="text-dark-gray font-body text-lg">We&apos;ll get back to you soon!</p>
             </div>
             <button
               onClick={handleDone}
