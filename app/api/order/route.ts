@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { pool } from "@/app/lib/db";
 import { notifySlack } from "@/lib/slack";
+import { sendOrderConfirmation } from "@/lib/resend";
 
 function generate7DigitId(): number {
   return Math.floor(1000000 + Math.random() * 9000000);
@@ -9,9 +10,9 @@ function generate7DigitId(): number {
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { name, phone, address, source, items, total } = body;
+    const { name, email, phone, address, source, items, total } = body;
 
-    if (!name || !phone || !address || !source || !items) {
+    if (!name || !email || !phone || !address || !source || !items) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
 
@@ -50,8 +51,16 @@ export async function POST(req: Request) {
     ).join("\n");
 
     notifySlack(
-      `🛒 *New Order #${orderId!}*\n*Name:* ${name}\n*Phone:* ${phone}\n*Address:* ${address}\n*Source:* ${source}\n*Items:*\n${itemsSummary}\n*Total:* ₹${total}`
+      `🛒 *New Order #${orderId!}*\n*Name:* ${name}\n*Phone:* ${phone}\n*Email:* ${email}\n*Address:* ${address}\n*Source:* ${source}\n*Items:*\n${itemsSummary}\n*Total:* ₹${total}`
     );
+
+    sendOrderConfirmation({
+      to: email,
+      customerName: name,
+      orderId: orderId!,
+      items,
+      total,
+    });
 
     return NextResponse.json({ success: true, id: orderId! });
   } catch (error) {

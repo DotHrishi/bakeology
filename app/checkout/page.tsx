@@ -5,14 +5,14 @@ import { useRouter } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useCart } from "@/context/CartContext";
-import { User, Phone, MapPin, Info, CheckCircle } from "lucide-react";
+import { User, Phone, MapPin, Info, CheckCircle, Mail } from "lucide-react";
 import Link from "next/link";
 
 export default function CheckoutPage() {
   const { items, total, count, clearCart } = useCart();
   const router = useRouter();
 
-  const [form, setForm] = useState({ name: "", phone: "", address: "", source: "" });
+  const [form, setForm] = useState({ name: "", email: "", phone: "", address: "", source: "" });
   const [loading, setLoading] = useState(false);
   const [confirmed, setConfirmed] = useState(false);
   const [orderId, setOrderId] = useState<number | null>(null);
@@ -118,6 +118,25 @@ export default function CheckoutPage() {
                 required
                 placeholder="Your full name"
                 value={form.name}
+                onChange={handleChange}
+                className="w-full pl-10 pr-4 py-3 border border-dark-gray/30 rounded-lg font-body text-dark-blue focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold transition-all placeholder-dark-gray/40"
+              />
+            </div>
+          </div>
+
+          {/* EMAIL */}
+          <div className="group">
+            <label className="block mb-2 text-sm font-body font-medium text-dark-blue uppercase tracking-wide">
+              Email Address
+            </label>
+            <div className="relative">
+              <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-dark-gray/60 group-focus-within:text-gold transition-colors" />
+              <input
+                name="email"
+                type="email"
+                required
+                placeholder="you@example.com"
+                value={form.email}
                 onChange={handleChange}
                 className="w-full pl-10 pr-4 py-3 border border-dark-gray/30 rounded-lg font-body text-dark-blue focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold transition-all placeholder-dark-gray/40"
               />
