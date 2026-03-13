@@ -35,6 +35,8 @@ export async function sendOrderConfirmation({
     )
     .join("");
 
+  const baseUrl = "https://bakeology-tau.vercel.app";
+
   const html = `
 <!DOCTYPE html>
 <html>
@@ -47,9 +49,10 @@ export async function sendOrderConfirmation({
 
           <!-- Header -->
           <tr>
-            <td style="background-color:#1a1a2e;padding:36px 40px;text-align:center;">
-              <h1 style="margin:0;color:#c9a84c;font-family:Georgia,serif;font-size:28px;letter-spacing:2px;">🎂 Bakeology</h1>
-              <p style="margin:8px 0 0;color:#ffffff99;font-size:14px;font-family:Arial,sans-serif;">Artisan Bakery</p>
+            <td style="background-color:#1a1a2e;padding:32px 40px;text-align:center;">
+              <img src="${baseUrl}/bakeology-logo.png" alt="Bakeology Logo" width="72" style="display:inline-block;margin-bottom:12px;" />
+              <br/>
+              <img src="${baseUrl}/bakeology-text.png" alt="Bakeology" height="28" style="display:inline-block;" />
             </td>
           </tr>
 

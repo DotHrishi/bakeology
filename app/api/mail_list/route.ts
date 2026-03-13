@@ -54,9 +54,9 @@ export async function POST(req: Request) {
     // 4. Send using Resend
     // -------------------------
     await resend.emails.send({
-      from: "Bakery <onboarding@resend.dev>",
+      from: process.env.RESEND_FROM_EMAIL ?? "Bakeology <onboarding@resend.dev>",
       to: email,
-      subject: "Welcome to our bakery 🍰",
+      subject: "Welcome to the Bakeology family! 🎂",
       html,
     });
 
@@ -76,11 +76,7 @@ export async function POST(req: Request) {
    Groq helper
 --------------------------------*/
 async function generateWelcomeMail(email: string) {
-  console.log(
-    "GROQ KEY LENGTH:",
-    process.env.GROQ_API_KEY?.length
-  );
-
+  const baseUrl = "https://bakeology-tau.vercel.app";
 
   const res = await fetch(
     "https://api.groq.com/openai/v1/chat/completions",
@@ -96,31 +92,99 @@ async function generateWelcomeMail(email: string) {
           {
             role: "system",
             content:
-              "You write short, friendly welcome emails for a bakery named bakeology as a newsletter. Keep it under 70 words. Minimum lines should be 10",
+              "You write short, warm, and friendly welcome messages for a premium artisan bakery named Bakeology. Write 3–4 short paragraphs. Each paragraph should be on its own line. Do NOT include a subject line, greeting with the email address, or sign-off — just the body paragraphs. No markdown.",
           },
           {
             role: "user",
-            content: `A user with email ${email} just subscribed.`,
+            content: `A new subscriber just joined the Bakeology newsletter.`,
           },
         ],
-        temperature: 0.4,
+        temperature: 0.6,
       }),
     }
   );
 
   const data = await res.json();
 
-  console.log("GROQ STATUS:", res.status);
-  console.log("GROQ DATA:", JSON.stringify(data, null, 2));
-
-  const text =
+  const text: string =
     data?.choices?.[0]?.message?.content ??
-    "Thanks for subscribing to our bakery newsletter!";
+    "Thank you for subscribing! We can't wait to share our latest creations with you. Expect sweet updates, exclusive offers, and a sprinkle of joy right in your inbox.";
+
+  // Convert newlines to <p> blocks
+  const paragraphs = text
+    .split(/\n+/)
+    .map((p: string) => p.trim())
+    .filter((p: string) => p.length > 0)
+    .map((p: string) => `<p style="margin:0 0 16px;color:#444;font-size:15px;line-height:1.7;font-family:Arial,sans-serif;">${p}</p>`)
+    .join("");
 
   return `
-    <div style="font-family:Arial, sans-serif; line-height:1.5">
-      ${text.replace(/\n/g, "<br/>")}
-    </div>
-  `;
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"></head>
+<body style="margin:0;padding:0;background-color:#fdf8f0;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background-color:#fdf8f0;padding:40px 20px;">
+    <tr>
+      <td align="center">
+        <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.08);">
+
+          <!-- Header -->
+          <tr>
+            <td style="background-color:#1a1a2e;padding:36px 40px;text-align:center;">
+              <img src="${baseUrl}/bakeology-logo.png" alt="Bakeology Logo" width="72" style="display:inline-block;margin-bottom:12px;" />
+              <br/>
+              <img src="${baseUrl}/bakeology-text.png" alt="Bakeology" height="28" style="display:inline-block;" />
+            </td>
+          </tr>
+
+          <!-- Hero banner -->
+          <tr>
+            <td style="padding:0;">
+              <img src="${baseUrl}/hero2.png" alt="Bakeology Treats" width="600" style="display:block;width:100%;max-width:600px;height:200px;object-fit:cover;" />
+            </td>
+          </tr>
+
+          <!-- Body -->
+          <tr>
+            <td style="padding:40px;">
+              <h2 style="margin:0 0 8px;color:#1a1a2e;font-family:Georgia,serif;font-size:24px;">Welcome to the family! 🎉</h2>
+              <p style="margin:0 0 24px;color:#c9a84c;font-family:Arial,sans-serif;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;font-weight:bold;">You're officially a Bakeology insider</p>
+
+              ${paragraphs}
+
+              <!-- CTA -->
+              <div style="text-align:center;margin:32px 0 8px;">
+                <a href="${baseUrl}/order%20now"
+                   style="display:inline-block;background-color:#1a1a2e;color:#c9a84c;font-family:Arial,sans-serif;font-weight:bold;font-size:15px;text-decoration:none;padding:14px 36px;border-radius:50px;letter-spacing:0.5px;">
+                  Browse Our Menu &rarr;
+                </a>
+              </div>
+            </td>
+          </tr>
+
+          <!-- Divider -->
+          <tr>
+            <td style="padding:0 40px;">
+              <hr style="border:none;border-top:1px solid #f0e8d8;margin:0;" />
+            </td>
+          </tr>
+
+          <!-- Footer -->
+          <tr>
+            <td style="background-color:#f9f4ec;padding:28px 40px;text-align:center;">
+              <p style="margin:0 0 8px;color:#1a1a2e;font-family:Georgia,serif;font-size:13px;font-weight:bold;letter-spacing:1px;">BAKEOLOGY</p>
+              <p style="margin:0;color:#aaa;font-family:Arial,sans-serif;font-size:12px;">
+                Artisan Bakery &bull; Made with love 🍰<br/>
+                &copy; ${new Date().getFullYear()} Bakeology. All rights reserved.
+              </p>
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>`;
 }
 
