@@ -94,8 +94,8 @@ export default function Navbar() {
       <div className={`fixed inset-0 bg-dark-blue z-40 flex flex-col items-center justify-center gap-12 transition-all duration-500 ${isMobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
         <div className="flex flex-col items-center gap-8 text-3xl font-body font-bold text-white">
           <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-gold transition">Home</Link>
-          <Link href="/order now" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-gold text-peach transition">Order Now</Link>
-          <Link href="/about us" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-gold transition">About Us</Link>
+          <Link href="/order-now" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-gold text-peach transition">Order Now</Link>
+          <Link href="/about-us" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-gold transition">About Us</Link>
           <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-gold transition">Contact</Link>
         </div>
 

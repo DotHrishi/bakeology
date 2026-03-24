@@ -39,7 +39,6 @@ export async function POST(req: Request) {
 
         const result = await pool.query(query, values);
 
-        // Notify admin via Slack
         notifySlack(
             `💬 *New Enquiry Received*\n*Name:* ${name}\n*Phone:* ${phone}\n*Email:* ${email}\n*Source:* ${source}\n*Address:* ${address}\n*Message:* ${message}`
         );

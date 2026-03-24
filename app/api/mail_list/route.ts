@@ -20,9 +20,7 @@ export async function POST(req: Request) {
       );
     }
 
-    // -------------------------
-    // 1. Store in Neon
-    // -------------------------
+    //store in neondb
     try {
       await pool.query(
         `INSERT INTO mail_list (email) VALUES ($1)`,
@@ -40,19 +38,13 @@ export async function POST(req: Request) {
       throw err;
     }
 
-    // -------------------------
-    // 2. Notify admin via Slack
-    // -------------------------
+    //notify by slack
     notifySlack(`📧 *New Newsletter Subscriber*\n${email} just subscribed to the mailing list.`);
 
-    // -------------------------
-    // 3. Generate welcome email with Groq
-    // -------------------------
+    //generate welcome email with groq
     const html = await generateWelcomeMail(email);
 
-    // -------------------------
-    // 4. Send using Resend
-    // -------------------------
+    //send using resend
     await resend.emails.send({
       from: process.env.RESEND_FROM_EMAIL ?? "Bakeology <onboarding@resend.dev>",
       to: email,
@@ -72,9 +64,6 @@ export async function POST(req: Request) {
 }
 
 
-/* -------------------------------
-   Groq helper
---------------------------------*/
 async function generateWelcomeMail(email: string) {
   const baseUrl = "https://bakeology-tau.vercel.app";
 
@@ -154,7 +143,7 @@ async function generateWelcomeMail(email: string) {
 
               <!-- CTA -->
               <div style="text-align:center;margin:32px 0 8px;">
-                <a href="${baseUrl}/order%20now"
+                <a href="${baseUrl}/order-now"
                    style="display:inline-block;background-color:#1a1a2e;color:#c9a84c;font-family:Arial,sans-serif;font-weight:bold;font-size:15px;text-decoration:none;padding:14px 36px;border-radius:50px;letter-spacing:0.5px;">
                   Browse Our Menu &rarr;
                 </a>

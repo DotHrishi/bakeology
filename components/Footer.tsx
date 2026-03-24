@@ -124,12 +124,12 @@ const Footer = () => {
               </h4>
               <ul className="space-y-4 font-body text-white/70">
                 <li>
-                  <Link href="/order now" className="hover:text-gold transition flex items-center gap-2 group">
+                  <Link href="/order-now" className="hover:text-gold transition flex items-center gap-2 group">
                     Order Now <ArrowUpRight size={14} className="opacity-0 group-hover:opacity-100 transition-opacity" />
                   </Link>
                 </li>
                 <li>
-                  <Link href="/about us" className="hover:text-gold transition flex items-center gap-2 group">
+                  <Link href="/about-us" className="hover:text-gold transition flex items-center gap-2 group">
                     About Us <ArrowUpRight size={14} className="opacity-0 group-hover:opacity-100 transition-opacity" />
                   </Link>
                 </li>

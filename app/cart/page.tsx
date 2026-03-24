@@ -26,7 +26,7 @@ const { items, addItem, removeItem, count, total } = useCart();
               Your cart is currently empty.
             </p>
             <Link
-              href="/order now"
+              href="/order-now"
               className="inline-block px-8 py-3 bg-dark-blue text-gold font-bold text-xl rounded-full
                          hover:bg-gold hover:text-dark-blue transition-all font-body"
             >

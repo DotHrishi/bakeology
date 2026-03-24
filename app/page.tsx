@@ -158,7 +158,7 @@ export default function Home() {
 
               <div className="hero-cta">
                 <a
-                  href="/order%20now"
+                  href="/order-now"
                   className="inline-flex bg-[#001D51] text-white px-10 py-4 rounded-full
                              font-semibold text-2xl shadow-md transition
                              hover:shadow-lg hover:brightness-105 hover:text-gold font-body"

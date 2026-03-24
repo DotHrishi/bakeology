@@ -64,7 +64,7 @@ export default function CheckoutPage() {
         <Navbar />
         <div className="flex-grow flex flex-col items-center justify-center gap-6 text-center px-6">
           <p className="text-2xl text-dark-blue font-body font-semibold">Your cart is empty.</p>
-          <Link href="/order%20now" className="px-8 py-3 bg-dark-blue text-gold font-body font-bold rounded-full hover:bg-gold hover:text-dark-blue transition-all">
+          <Link href="/order-now" className="px-8 py-3 bg-dark-blue text-gold font-body font-bold rounded-full hover:bg-gold hover:text-dark-blue transition-all">
             Browse Menu
           </Link>
         </div>
@@ -240,7 +240,7 @@ export default function CheckoutPage() {
             <div>
             <h2 className="text-2xl sm:text-3xl font-body font-bold text-dark-blue mb-2">Order Confirmed!</h2>
               {orderId && (
-                <p className="text-dark-blue bg-dark-blue/10 font-body font-bold text-lg px-4 py-2 rounded-lg mb-2">
+                <p className="text-green-600 bg-dark-blue/10 font-body font-bold text-lg px-4 py-2 rounded-lg mb-2">
                   Order ID: #{orderId}
                 </p>
               )}

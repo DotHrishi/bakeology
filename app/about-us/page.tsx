@@ -73,9 +73,7 @@ const Page = () => {
     <div ref={containerRef} className="bg-beige min-h-screen overflow-hidden">
       <Navbar />
 
-      {/* HERO SECTION */}
       <div className="relative h-screen w-full flex items-center justify-center overflow-hidden">
-        {/* Parallax Background */}
         <div className="absolute inset-0 z-0 hero-bg">
           <Image
             src="/hero.png"
@@ -86,7 +84,6 @@ const Page = () => {
           />
         </div>
 
-        {/* Hero Content */}
         <div className="relative z-10 text-center px-4 sm:px-6 max-w-5xl">
           <h1
             ref={heroTextRef}
@@ -99,16 +96,13 @@ const Page = () => {
           </p>
         </div>
 
-        {/* Scroll Indicator */}
         <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce z-10">
           <div className="w-[1px] h-16 bg-white/50 mx-auto"></div>
         </div>
       </div>
 
-      {/* OUR STORY */}
       <section className="relative py-14 sm:py-20 md:py-24 px-4 sm:px-6 md:px-12 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 md:gap-16 items-center">
-          {/* Text Content */}
           <div ref={storyRef} className="space-y-8">
             <h2 className="text-3xl sm:text-5xl md:text-6xl text-dark-blue font-body font-bold underline underline-offset-8 decoration-gold">
               Our Story
@@ -144,7 +138,6 @@ const Page = () => {
             </div>
           </div>
 
-          {/* Image/Visual */}
           <div className="relative h-[320px] sm:h-[480px] md:h-[600px] w-full rounded-2xl md:rounded-full overflow-hidden border-4 border-gold shadow-2xl md:rotate-3 md:hover:rotate-0 transition-transform duration-700 ease-out">
             <Image
               src="/hero.png"
@@ -157,7 +150,6 @@ const Page = () => {
         </div>
       </section>
 
-      {/* GALLERY STRIP */}
       <section className="bg-dark-blue py-12 sm:py-20 text-white overflow-hidden">
         <div className="text-center mb-10 sm:mb-16">
           <h2 className="text-3xl sm:text-5xl font-body font-bold text-gold mb-4">Newly Added</h2>
@@ -167,7 +159,6 @@ const Page = () => {
         <Carousel />
       </section>
 
-      {/* CTA */}
       <section className="py-20 sm:py-32 bg-[url('/hero2.png')] bg-cover bg-scroll md:bg-fixed bg-center relative">
         <div className="absolute inset-0 bg-black/70"></div>
         <div className="relative z-10 text-center text-white px-6">
@@ -176,7 +167,7 @@ const Page = () => {
             Let&apos;s turn your dream dessert into reality. Place your order today and experience the Bakelogy difference.
           </p>
           <Link
-            href="/order now"
+            href="/order-now"
             className="inline-flex items-center gap-3 px-7 sm:px-10 py-4 sm:py-5 bg-gold text-dark-blue font-bold text-lg sm:text-2xl rounded-full hover:bg-white hover:text-dark-blue transition-all transform hover:scale-105 shadow-xl font-body"
           >
             Order Now <ArrowRight />
