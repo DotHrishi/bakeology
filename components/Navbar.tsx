@@ -130,7 +130,7 @@ function NavLinks() {
       {["Order Now", "About Us", "Contact"].map((item) => (
         <Link
           key={item}
-          href={`/${item.toLowerCase()}`}
+          href={`/${item.toLowerCase().replace(/ /g, '-')}`}
           className="relative group hover:text-gold transition"
         >
           {item}
